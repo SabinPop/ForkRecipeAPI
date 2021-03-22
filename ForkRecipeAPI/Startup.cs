@@ -29,7 +29,7 @@ namespace ForkRecipeAPI
         {
             services.AddControllers();
             services.AddDbContext<RecipesContext>(options =>
-                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnecton")));
+                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
