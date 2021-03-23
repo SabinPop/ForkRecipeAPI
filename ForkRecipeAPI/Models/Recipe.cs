@@ -16,7 +16,7 @@ namespace ForkRecipeAPI
         // public ICollection<Spice> Spices { get; set; }
 
 
-        public ICollection<int> IngredientsID { get; set; }
-        public ICollection<int> SpicesID { get; set; }
+        public virtual ICollection<Ingredient> Ingredients { get; set; }
+        public virtual ICollection<Spice> Spices { get; set; }
     }
 }

@@ -17,6 +17,7 @@ namespace ForkRecipeAPI.Data
 
             var spices = new Spice[]
             {
+                new Spice {ID = 0, Name = ""},
                 new Spice{ ID = 1, Name = "Sare" },
                 new Spice{ ID = 2, Name = "Piper"},
                 new Spice{ ID = 3, Name = "Boia"}
@@ -30,6 +31,7 @@ namespace ForkRecipeAPI.Data
 
             var ingredients = new Ingredient[]
             {
+                new Ingredient{ ID = 0, Name = ""},
                 new Ingredient{ ID = 1, Name = "Cartofi"},
                 new Ingredient{ ID = 2, Name = "Ceapa" },
                 new Ingredient{ ID = 3, Name = "Piept de pui"}
@@ -46,7 +48,7 @@ namespace ForkRecipeAPI.Data
                 new Recipe{ ID = 1,
                     Title = "Cartofi cu piept de pui", 
                     Description = "descriere cartofi cu piept de pui descriere", 
-                    IngredientsID = {1, 3}, SpicesID = {1, 2, 3} }
+                    Ingredients = { ingredients[1], ingredients[3]} , Spices = {spices[1], spices[2]} }
             };
 
             foreach(Recipe recipe in recipes)
