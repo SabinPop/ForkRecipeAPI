@@ -50,6 +50,15 @@ namespace ForkRecipeAPI
             {
                 endpoints.MapControllers();
             });
+
+            /*
+            app.UseMvc(routes =>
+            {
+                routes.MapRoute(
+                    name: "default", 
+                    template: "{controller=Recipes}/{action=Index}/{id?}");
+            })
+            */
         }
     }
 }

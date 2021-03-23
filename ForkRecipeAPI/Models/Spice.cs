@@ -4,11 +4,9 @@ namespace ForkRecipeAPI
 {
     public class Spice
     {
-        private int id;
-        private string name;
 
-        public int ID { get => id; private set => id = value; }
+        public int ID { get; set; }
 
-        public string Name { get => name; set => name = value; }
+        public string Name { get; set; }
     }
 }
