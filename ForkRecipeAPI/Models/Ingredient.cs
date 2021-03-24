@@ -1,11 +1,21 @@
 using System;
+using System.Collections.Generic;
 
 namespace ForkRecipeAPI
 {
     public class Ingredient
     {
-        public int ID { get; set;  }
+        /*
+        public Ingredient()
+        {
+            RecipeIngredients = new HashSet<RecipeIngredient>();
+        }
+        */
+        public int IngredientID { get; set;  }
 
-        public string Name { get; set; }
+        public string IngredientName { get; set; }
+
+        public virtual ICollection<RecipeIngredient> RecipeIngredients { get; set; }
+
     }
 }

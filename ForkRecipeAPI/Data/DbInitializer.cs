@@ -14,13 +14,14 @@ namespace ForkRecipeAPI.Data
                 return;
 
             // if not then populate the DB
-
+            
+            /*
+            
             var spices = new Spice[]
             {
-                new Spice {ID = 0, Name = ""},
-                new Spice{ ID = 1, Name = "Sare" },
-                new Spice{ ID = 2, Name = "Piper"},
-                new Spice{ ID = 3, Name = "Boia"}
+                //new Spice { SpiceID = 0, SpiceName = ""},
+                new Spice{ SpiceID = 1, SpiceName = "Sare" },
+                new Spice{SpiceID = 2, SpiceName = "Piper"}
             };
 
             foreach(Spice spice in spices)
@@ -31,10 +32,10 @@ namespace ForkRecipeAPI.Data
 
             var ingredients = new Ingredient[]
             {
-                new Ingredient{ ID = 0, Name = ""},
-                new Ingredient{ ID = 1, Name = "Cartofi"},
-                new Ingredient{ ID = 2, Name = "Ceapa" },
-                new Ingredient{ ID = 3, Name = "Piept de pui"}
+                //new Ingredient{ IngredientID = 0, IngredientName = ""},
+                new Ingredient{ IngredientID = 1, IngredientName = "Cartofi"},
+                new Ingredient{ IngredientID = 2, IngredientName = "Ceapa" },
+                new Ingredient{ IngredientID = 3, IngredientName = "Piept de pui"}
             };
 
             foreach(Ingredient ingredient in ingredients)
@@ -43,19 +44,48 @@ namespace ForkRecipeAPI.Data
             }
             context.SaveChanges();
 
-            var recipes = new Recipe[]
+            var recipeIngredients = new RecipeIngredient[]
             {
-                new Recipe{ ID = 1,
-                    Title = "Cartofi cu piept de pui", 
-                    Description = "descriere cartofi cu piept de pui descriere", 
-                    Ingredients = { ingredients[1], ingredients[3]} , Spices = {spices[1], spices[2]} }
+                new RecipeIngredient { RecipeID = 1, IngredientID = 1},
+                new RecipeIngredient { RecipeID = 1, IngredientID = 3}
             };
 
-            foreach(Recipe recipe in recipes)
+            foreach(var ri in recipeIngredients)
             {
-                context.Recipes.Add(recipe);
+                context.RecipeIngredients.Add(ri);
             }
             context.SaveChanges();
+
+            var recipeSpices = new RecipeSpice[]
+            {
+                new RecipeSpice { RecipeID = 1, SpiceID = 1},
+                new RecipeSpice { RecipeID = 1, SpiceID = 2}
+            };
+
+            foreach(var rs in recipeSpices)
+            {
+                context.RecipeSpices.Add(rs);
+            }
+            context.SaveChanges();
+
+            var recipes = new Recipe[]
+            {
+                new Recipe {
+                    RecipeID = 1,
+                    RecipeTitle = "pui cu cartofi",
+                    RecipeDescription = "descriere ... \n descriere2",
+                    RecipeIngredients = recipeIngredients,
+                    RecipeSpices = recipeSpices
+                }
+            };
+
+            foreach(var r in recipes)
+            {
+                context.Recipes.Add(r);
+            }
+            context.SaveChanges();
+
+            */
         }
     }
 }

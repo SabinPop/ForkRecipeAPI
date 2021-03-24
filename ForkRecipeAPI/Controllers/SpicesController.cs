@@ -12,47 +12,48 @@ namespace ForkRecipeAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class RecipesController : ControllerBase
+    public class SpicesController : ControllerBase
     {
         private readonly RecipesContext _context;
 
-        public RecipesController(RecipesContext context)
+        public SpicesController(RecipesContext context)
         {
             _context = context;
         }
 
-        // GET: api/Recipes
+        // GET: api/Spices
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Recipe>>> GetRecipes()
+        public async Task<ActionResult<IEnumerable<Spice>>> GetSpices()
         {
-            return await _context.Recipes.ToListAsync();
+            return await _context.Spices.ToListAsync();
         }
 
-        // GET: api/Recipes/5
+        // GET: api/Spices/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Recipe>> GetRecipe(int id)
+        public async Task<ActionResult<Spice>> GetSpice(int id)
         {
-            var recipe = await _context.Recipes.FindAsync(id);
+            var spice = await _context.Spices.FindAsync(id);
 
-            if (recipe == null)
+            if (spice == null)
             {
                 return NotFound();
             }
-            return recipe;
+
+            return spice;
         }
 
-        // PUT: api/Recipes/5
+        // PUT: api/Spices/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutRecipe(int id, Recipe recipe)
+        public async Task<IActionResult> PutSpice(int id, Spice spice)
         {
-            if (id != recipe.RecipeID)
+            if (id != spice.SpiceID)
             {
                 return BadRequest();
             }
 
-            _context.Entry(recipe).State = EntityState.Modified;
+            _context.Entry(spice).State = EntityState.Modified;
 
             try
             {
@@ -60,7 +61,7 @@ namespace ForkRecipeAPI.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!RecipeExists(id))
+                if (!SpiceExists(id))
                 {
                     return NotFound();
                 }
@@ -73,37 +74,37 @@ namespace ForkRecipeAPI.Controllers
             return NoContent();
         }
 
-        // POST: api/Recipes
+        // POST: api/Spices
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [HttpPost]
-        public async Task<ActionResult<Recipe>> PostRecipe(Recipe recipe)
+        public async Task<ActionResult<Spice>> PostSpice(Spice spice)
         {
-            _context.Recipes.Add(recipe);
+            _context.Spices.Add(spice);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetRecipe", new { id = recipe.RecipeID }, recipe);
+            return CreatedAtAction("GetSpice", new { id = spice.SpiceID }, spice);
         }
 
-        // DELETE: api/Recipes/5
+        // DELETE: api/Spices/5
         [HttpDelete("{id}")]
-        public async Task<ActionResult<Recipe>> DeleteRecipe(int id)
+        public async Task<ActionResult<Spice>> DeleteSpice(int id)
         {
-            var recipe = await _context.Recipes.FindAsync(id);
-            if (recipe == null)
+            var spice = await _context.Spices.FindAsync(id);
+            if (spice == null)
             {
                 return NotFound();
             }
 
-            _context.Recipes.Remove(recipe);
+            _context.Spices.Remove(spice);
             await _context.SaveChangesAsync();
 
-            return recipe;
+            return spice;
         }
 
-        private bool RecipeExists(int id)
+        private bool SpiceExists(int id)
         {
-            return _context.Recipes.Any(e => e.RecipeID == id);
+            return _context.Spices.Any(e => e.SpiceID == id);
         }
     }
 }
