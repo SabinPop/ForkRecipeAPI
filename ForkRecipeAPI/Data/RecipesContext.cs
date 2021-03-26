@@ -53,6 +53,22 @@ namespace ForkRecipeAPI.Data
                         .WithMany(s => s.RecipeSpices)
                         .HasForeignKey(rs => rs.SpiceID);
 
+
+            
+
+            modelBuilder.Entity<Recipe>()
+                        .HasMany(ri => ri.RecipeIngredients)
+                        .WithOne(i => i.Recipe)
+                        .HasForeignKey(i =>  i.RecipeID);
+
+            modelBuilder.Entity<Recipe>()
+                        .HasMany(rs => rs.RecipeSpices)
+                        .WithOne(s => s.Recipe)
+                        .HasForeignKey(s => s.RecipeID);
+
+
+            
+
             /*
              * 
             modelBuilder.Entity<Recipe>()
